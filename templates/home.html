@@ -1,0 +1,30 @@
+<html>
+    <body>
+
+        <h1>Book Manager App</h1>
+
+        <h2>Add Books</h2>
+
+        <form method="POST" action="/">
+            <input type="text" name="title">
+            <input type="submit" value="Add">
+        </form>
+
+        <h1>All Books</h1>
+
+        {% for book in books %}
+            <p>{{book.title}}</p>
+            <form method="POST" action="./update">
+                <input type = "hidden" value = "{{book.title}}" name="oldtitle">
+                <input type = "text" values = "{{book.title}}" name="newtitle" placeholder="give some new title">
+                <input type = "submit" value="Update">
+            </form>
+            <form method="POST" action="./delete">
+                <input type="hidden" value = "{{book.title}}" name = "title">
+                <input type="submit" value="Delete">
+            </form>
+        {% endfor %}
+
+    </body>
+    
+</html>
